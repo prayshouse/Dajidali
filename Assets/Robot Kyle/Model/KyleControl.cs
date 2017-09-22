@@ -7,6 +7,8 @@ public class KyleControl : MonoBehaviour
 
     private Animator anim;
     //private float jumpTimer = 0;
+    public enum state_ { Idle, Run };
+    public state_ robotState { get; set; }
 
     void Start()
     {
@@ -17,16 +19,19 @@ public class KyleControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (robotState)
+        {
+            case state_.Idle:
+                anim.SetInteger("Speed", 0);
+                break;
+            case state_.Run:
+                anim.SetInteger("Speed", 2);
+                break;
+            default:
+                break;
+        }
 
-        //Controls the Input for running animations
-        // 1: walk
-        //2: Run
-        //3: Jump
-
-        if (Input.GetKey("2")) anim.SetInteger("Speed", 2);
-        else if (Input.GetKey("1")) anim.SetInteger("Speed", 1);
-        else anim.SetInteger("Speed", 0);
-
+        // Jump
         //if (Input.GetKey("3"))
         //{
 
