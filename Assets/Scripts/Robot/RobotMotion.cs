@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RobotMotion : MonoBehaviour {
 
-    private Animator anim;
+    //private Animator anim;
     private Vector2 constVec;
     private KyleControl kyleControl;
 
@@ -15,7 +15,7 @@ public class RobotMotion : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        anim = this.gameObject.GetComponent<Animator>();
+        //anim = this.gameObject.GetComponent<Animator>();
         kyleControl = gameObject.GetComponent<KyleControl>();
     }
 	
