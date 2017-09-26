@@ -7,8 +7,8 @@ public class MouseOrbit : MonoBehaviour
 	float distance = 15f;
 	float xSpeed = 4.0f;
 	float ySpeed = 1.0f;
-	float x = 0.0f;
-	float y = 2.0f;
+	float x = 15.0f;
+	float y = 5.0f;
 	
 	
 	void Start () 
@@ -16,12 +16,7 @@ public class MouseOrbit : MonoBehaviour
 	    Vector3 angles = transform.eulerAngles;
     	x = angles.y;
     	y = angles.x;
-
-		// Make the rigid body not change rotation
-   		if (GetComponent<Rigidbody>())
-			GetComponent<Rigidbody>().freezeRotation = true;
-		
-		//Screen.showCursor = false;
+		transform.rotation = Quaternion.Euler( y, x, 0.0f);
 	}
 	
 	// Update is called once per frame
