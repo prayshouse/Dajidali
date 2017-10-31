@@ -6,14 +6,12 @@ public class KyleControl : MonoBehaviour
 {
 
     private Animator anim;
-    //private float jumpTimer = 0;
-    public enum state_ { Idle, Run };
+    public enum state_ { Idle, Run, Walk };
     public state_ robotState { get; set; }
 
     void Start()
     {
         anim = this.gameObject.GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -27,21 +25,11 @@ public class KyleControl : MonoBehaviour
             case state_.Run:
                 anim.SetInteger("Speed", 2);
                 break;
+            case state_.Walk:
+                anim.SetInteger("Speed", 1);
+                break;
             default:
                 break;
         }
-
-        // Jump
-        //if (Input.GetKey("3"))
-        //{
-
-        //    jumpTimer = 1;
-        //    anim.SetBool("Jumping", true);
-
-        //}
-
-        //if (jumpTimer > 0.5) jumpTimer -= Time.deltaTime;
-        //else if (anim.GetBool("Jumping") == true) anim.SetBool("Jumping", false);
-
     }
 }

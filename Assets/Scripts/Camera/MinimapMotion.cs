@@ -7,11 +7,11 @@ public class MinimapMotion : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        klyeRobot = GameObject.Find("Robot Kyle");
+        klyeRobot = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = new Vector3(klyeRobot.transform.position.x, 20.0f, klyeRobot.transform.position.z);
+        transform.position = new Vector3(klyeRobot.transform.position.x, 40.0f, klyeRobot.transform.position.z);
 	}
 }

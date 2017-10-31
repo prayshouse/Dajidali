@@ -26,17 +26,20 @@ public class RobotMotion : MonoBehaviour {
 
 	public void JoystickMove(Vector2 move)
 	{
-		// Debug.Log(move);
-		float angle = (move.x < 0.0f) ?
+        float angle = (move.x < 0.0f) ?
             360.0f - Vector3.Angle(move, constVec) : Vector3.Angle(move, constVec);
 		transform.rotation = Quaternion.Euler(0, angle, 0);
         transform.position =
             new Vector3(transform.position.x + move.x / 10, transform.position.y, transform.position.z + move.y / 10);
+        if (kyleControl.robotState == KyleControl.state_.Walk && move.magnitude > 0.64f)
+            kyleControl.robotState = KyleControl.state_.Run;
+        else if (kyleControl.robotState == KyleControl.state_.Run && move.magnitude < 0.64f)
+            kyleControl.robotState = KyleControl.state_.Walk;
     }
 
     public void JoystickMoveStart()
     {
-        kyleControl.robotState = KyleControl.state_.Run;
+        kyleControl.robotState = KyleControl.state_.Walk;
     }
 
     public void JoysitckMoveEnd()
