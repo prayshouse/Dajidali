@@ -12,6 +12,7 @@ public class KyleControl : MonoBehaviour
     void Start()
     {
         anim = this.gameObject.GetComponent<Animator>();
+        anim.SetBool("Idling", true);
     }
 
     // Update is called once per frame

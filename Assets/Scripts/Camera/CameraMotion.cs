@@ -9,7 +9,7 @@ public class CameraMotion : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Robot = GameObject.Find("Robot Kyle");
+        Robot = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
