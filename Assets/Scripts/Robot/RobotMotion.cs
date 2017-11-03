@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class RobotMotion : MonoBehaviour {
 
-    //private Animator anim;
+    private Animator anim;
     private Vector2 constVec;
-    private KyleControl kyleControl;
+    private Rigidbody rigidbody;
 
 	void Awake () {
 		constVec.Set(0.0f, 1.0f);
+        anim = gameObject.GetComponent<Animator>();
+        rigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        //anim = this.gameObject.GetComponent<Animator>();
-        kyleControl = gameObject.GetComponent<KyleControl>();
+        anim.SetBool("Idleing", true);
     }
 	
 	// Update is called once per frame
@@ -26,8 +27,7 @@ public class RobotMotion : MonoBehaviour {
 
 	public void JoystickMove(Vector2 move)
 	{
-		// Debug.Log(move);
-		float angle = (move.x < 0.0f) ?
+        float angle = (move.x < 0.0f) ?
             360.0f - Vector3.Angle(move, constVec) : Vector3.Angle(move, constVec);
 		transform.rotation = Quaternion.Euler(0, angle, 0);
         transform.position =
@@ -36,11 +36,13 @@ public class RobotMotion : MonoBehaviour {
 
     public void JoystickMoveStart()
     {
-        kyleControl.robotState = KyleControl.state_.Run;
+        anim.SetBool("Idling", false);
+        rigidbody.freezeRotation = true;
     }
 
     public void JoysitckMoveEnd()
     {
-        kyleControl.robotState = KyleControl.state_.Idle;
+        anim.SetBool("Idling", true);
+        rigidbody.freezeRotation = false;
     }
 }
