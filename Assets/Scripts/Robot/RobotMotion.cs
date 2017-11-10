@@ -17,7 +17,7 @@ public class RobotMotion : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        anim.SetBool("Idleing", true);
+        anim.SetBool("Idling", true);
     }
 	
 	// Update is called once per frame
