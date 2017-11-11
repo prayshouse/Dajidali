@@ -26,14 +26,14 @@ public class WeaponBox : MonoBehaviour {
     public bool SpaceRifle = false;
     public bool Spear = false;
 
-    Collider sphereCollider;
+    // Collider sphereCollider;
 
     GameObject mainPlayer;
     Collider mainPlayerCollider;
 
 	// Use this for initialization
 	void Start () {
-        sphereCollider = gameObject.GetComponent<SphereCollider>();
+        //sphereCollider = gameObject.GetComponent<SphereCollider>();
         mainPlayer = GameObject.FindGameObjectWithTag("Player");
         mainPlayerCollider = mainPlayer.GetComponent<CapsuleCollider>();
 	}

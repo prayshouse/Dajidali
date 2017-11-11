@@ -13,6 +13,6 @@ public class MinimapMotion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Robot)
-            transform.position = new Vector3(Robot.transform.position.x, 40.0f, Robot.transform.position.z);
+            transform.position = new Vector3(Robot.transform.position.x, 80.0f, Robot.transform.position.z);
 	}
 }

@@ -18,12 +18,18 @@ public class GetWeaponBind : MonoBehaviour {
         }
     }
 
-    GameObject weaponBox_;
-    static GameObject weaponBox
+    GameObject weaponBoxObj_;
+    static GameObject weaponBoxObj
     {
-        get { return Instance.weaponBox_; }
-        set { Instance.weaponBox_ = value; }
+        get { return Instance.weaponBoxObj_; }
+        set { Instance.weaponBoxObj_ = value; }
     }
+
+	WeaponBox weaponBox_;
+	static WeaponBox weaponBox {
+		get { return Instance.weaponBox_; }
+		set { Instance.weaponBox_ = value; }
+	}
 
     GameObject mainPlayer_;
     static GameObject mainPlayer
@@ -44,29 +50,32 @@ public class GetWeaponBind : MonoBehaviour {
 
     public void bindWeaponBox(GameObject wb)
     {
-        weaponBox = wb;
+		weaponBoxObj = wb;
+		weaponBox = weaponBoxObj.GetComponent<WeaponBox> ();
     }
 
     public void freeWeaponBoxBind()
     {
-        weaponBox = null;
+		weaponBoxObj = null;
+		weaponBox = null;
     }
 
     public bool checkWeaponBox(GameObject wb)
     {
         bool result = false;
-        if (weaponBox == wb) result = true;
+		if (weaponBoxObj == wb) result = true;
         return result;
     }
 
     public void OnUp()
     {
-        if (weaponBox != null)
+		if (weaponBoxObj != null)
         {
             // 处理获得装备的逻辑
             // 武器盒：weaponBox
             // 玩家:mainPlayer
             // 
+			Debug.Log(weaponBox.hasWeapon);
             Debug.Log("getWeapon!");
         }
     }
